@@ -2,6 +2,14 @@ import React from "react";
 import "./App.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
 
+export function HeaderBorderColor(): React.JSX.Element {
+    return (
+        <div>
+            <h1 style={{ backgroundColor: "red" }}>This is a header</h1>
+        </div>
+    );
+}
+
 export function ThreeColumns(): React.JSX.Element {
     return (
         <div>
@@ -61,7 +69,7 @@ function App(): React.JSX.Element {
                 UD CISC275 with React Hooks and TypeScript and my name is
                 Nicholas Wang
             </header>
-            <h1 className="header">Welcome to my React App</h1>
+            <HeaderBorderColor />
             <p>Hello World I love to eat French Fries</p>
             <img src="public\kirb.png" alt="Kirby :)" />
             <ul>
