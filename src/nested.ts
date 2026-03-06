@@ -157,8 +157,10 @@ export function addNewQuestion(
     name: string,
     type: QuestionType,
 ): Question[] {
-    let toReturn: Question[] = [...questions];
-    toReturn.push(makeBlankQuestion(id, name, type));
+    let toReturn: Question[] = [
+        ...questions,
+        makeBlankQuestion(id, name, type),
+    ];
     return toReturn;
 }
 
