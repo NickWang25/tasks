@@ -1,4 +1,3 @@
-import { subscribe } from "diagnostics_channel";
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
 import { makeBlankQuestion, duplicateQuestion } from "./objects";
@@ -253,11 +252,10 @@ export function duplicateQuestionInArray(
     newId: number,
 ): Question[] {
     return questions.reduce((arr: Question[], q: Question) => {
-        arr.push(q);
         if (q.id === targetId) {
-            arr.push(duplicateQuestion(newId, q));
+            return [...arr, q, duplicateQuestion(newId, q)];
         }
 
-        return arr;
+        return [...arr, q];
     }, [] as Question[]);
 }
