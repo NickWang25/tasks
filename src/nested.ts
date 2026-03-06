@@ -2,7 +2,6 @@ import { subscribe } from "diagnostics_channel";
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
 import { makeBlankQuestion, duplicateQuestion } from "./objects";
-import { isElementAccessExpression } from "typescript";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -260,5 +259,5 @@ export function duplicateQuestionInArray(
         }
 
         return arr;
-    }, []);
+    }, [] as Question[]);
 }
