@@ -158,7 +158,7 @@ export function addNewQuestion(
     type: QuestionType,
 ): Question[] {
     let toReturn: Question[] = [
-        ...questions,
+        ...(questions as Question[]),
         makeBlankQuestion(id, name, type),
     ];
     return toReturn;
@@ -175,7 +175,7 @@ export function renameQuestionById(
     newName: string,
 ): Question[] {
     return questions.map((q: Question) =>
-        q.id === targetId ? { ...q, name: newName } : { ...q },
+        q.id === targetId ? { ...(q as Question), name: newName } : { ...q },
     );
 }
 
@@ -194,9 +194,9 @@ export function changeQuestionTypeById(
     return questions.map((q: Question) =>
         q.id === targetId ?
             newQuestionType === "multiple_choice_question" ?
-                { ...q, type: newQuestionType }
-            :   { ...q, type: newQuestionType, options: [] }
-        :   { ...q },
+                { ...(q as Question), type: newQuestionType }
+            :   { ...(q as Question), type: newQuestionType, options: [] }
+        :   { ...(q as Question) },
     );
 }
 
@@ -236,7 +236,7 @@ export function editOption(
             return q;
         }
         return {
-            ...q,
+            ...(q as Question),
             options: helper(q.options, targetOptionIndex, newOption),
         };
     });
@@ -258,6 +258,6 @@ export function duplicateQuestionInArray(
             return [...arr, q, duplicateQuestion(newId, q)];
         }
 
-        return [...arr, q];
+        return [...arr, q as Question] as Question[];
     }, [] as Question[]);
 }
