@@ -19,7 +19,7 @@ export function makeBlankQuestion(
         expected: "",
         points: 1,
         published: false,
-    };
+    } as Question;
 }
 
 /**
